@@ -1,0 +1,97 @@
+html
+  font-size: 10px
+  font-family: 'Arial', sans-serif
+  scroll-behavior: smooth
+
+  @media screen and (max-width: 1210px)
+    font-size: 8px
+
+*, *:before, *:after
+  box-sizing: border-box
+  margin: 0
+
+a
+  text-decoration: none
+  color: inherit
+
+ul
+  padding: 0
+  margin: 0
+
+  li
+    list-style: none
+    padding: 0
+    margin: 0
+
+input,
+textarea
+  outline: none
+  font-size: 1.6rem
+  border-radius: .3rem
+
+  &:focus
+    outline: none
+
+.container
+  max-width: 1467px
+  width: 100%
+  margin: 0 auto
+  padding: 50px 20px
+
+  .tablinks
+    outline: none
+    cursor: pointer
+    padding: 0 16px 4rem 16px
+    transition: 0.3s
+    width: 33.3%
+    background-color: transparent
+    color: #d4d9dd
+    font-size: 2.7rem
+    font-weight: 700
+    text-transform: uppercase
+    border: none
+    border-bottom: 1px solid #d4d9dd
+
+    &.active
+      border-bottom: 1px solid black
+      color: #3a3f42
+
+.tab
+  overflow: hidden
+  display: flex
+  justify-content: space-between
+  align-items: center
+  margin-bottom: 10rem
+
+.tabcontent
+  display: none
+
+.tab-content__grid--inputs
+  display: grid
+  grid-template-columns: repeat(auto-fill, minmax(48% , 1fr))
+  grid-gap: 3rem
+
+
+.default-label
+  width: 100%
+
+  span
+    font-size: 2.4rem
+    margin-bottom: 1.5rem
+    color: #d4d9dd
+    display: inline-block
+
+  &.__w100
+    grid-column: span 2
+
+  .default-input
+    width: 100%
+    height: 11rem
+    border: 2px solid #d4d9dd
+    border-radius: 3px
+    padding: 3rem
+    font-size: 3.15rem
+
+.tab-content__title
+  font-size: 5rem
+  margin-bottom: 5rem
