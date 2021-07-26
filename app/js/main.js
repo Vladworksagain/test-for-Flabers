@@ -1,4 +1,4 @@
-function openCity(evt, id) {
+function tabs(evt, id) {
     let i,
         tabcontent,
         tablinks;
@@ -17,11 +17,31 @@ function openCity(evt, id) {
     evt.currentTarget.className += " active";
 }
 
-// document.addEventListener("DOMContentLoaded", () => {
-//
-// })
-//
-//
-// function getTabButtons() {
-//     document.
-// }
+document.querySelector('.tablinks').click()
+
+var element = document.getElementById('inputMask');
+var phoneMask = IMask(element, {
+    mask: '+{3} 8(0) 000-00-00-00',
+    lazy: false,
+    placeholderChar: '_',
+});
+
+let map;
+
+function initMap() {
+    map = new google.maps.Map(document.getElementById("map"), {
+        center: { lat: -34.397, lng: 150.644 },
+        zoom: 8,
+        disableDefaultUI: true,
+        zoomControl: true,
+    });
+
+    map.setCenter({lat: 50.4279196877749, lng: 30.500332326549188});
+    new google.maps.Marker({position:
+            {
+                lat: 50.4279196877749,
+                lng: 30.500332326549188
+            },
+            map: map,
+    });
+}

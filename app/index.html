@@ -13,13 +13,13 @@
 <div class="container">
     <div class="wrapper">
         <div class="tab">
-            <button class="tablinks" onclick="openCity(event, '1')">01 customer info</button>
-            <button class="tablinks" onclick="openCity(event, '2')">02 Shipping info</button>
-            <button class="tablinks" onclick="openCity(event, '3')">03 Payment selection</button>
+            <button class="tablinks" onclick="tabs(event, '1')">01 customer info</button>
+            <button class="tablinks" onclick="tabs(event, '2')">02 Shipping info</button>
+            <button class="tablinks" onclick="tabs(event, '3')">03 Payment selection</button>
         </div>
 
         <div id="1" class="tabcontent">
-            <div class="tab-content__title">
+            <div class="tab-content__title first-tabs">
                 Customer information
             </div>
             <form class="tab-content__grid--inputs">
@@ -36,26 +36,109 @@
                     <input type="text" class="default-input"></label>
                 <label class="default-label">
                     <span>Country</span>
-                    <input type="text" class="default-input">
+                    <select required class="default-select" autofocus name="#" id="#">
+                        <option value disabled selected class="select-option">Select your Country</option>
+                        <option value="#">Ukraine</option>
+                        <option value="#">England</option>
+                        <option value="#">USA</option>
+                    </select>
                 </label>
                 <label class="default-label">
                     <span>City</span>
-                    <input type="text" class="default-input">
+                    <select class="default-select" name="#">
+                        <option value="#">Kiev</option>
+                        <option value="#">Kriviy Rig</option>
+                        <option value="#">Odessa</option>
+                    </select>
+                </label>
+                <label class="default-label desc-postal__code">
+                    <span>Postal code</span>
+                    <div class="postal-code__wrap">
+                        <input type="text" class="default-input">
+                        <button class="find-postal__code-btn">Find</button>
+                    </div>
                 </label>
                 <label class="default-label">
-                    <span>Postal code</span>
-                    <input type="text" class="default-input">
+                    <span>Phone</span>
+                    <input type="text" class="default-input" id="inputMask">
                 </label>
-                <label class="default-label">
+                <label class="default-label mobile-postal__code">
                     <span>Postal code</span>
-                    <input type="text" class="default-input">
+                    <div class="postal-code__wrap">
+                        <input type="text" class="default-input">
+                        <button class="find-postal__code-btn">Find</button>
+                    </div>
                 </label>
+                <div class="feedback-content__buttons">
+                    <button class="feedback-content__btn-back">
+                        Return to shop
+                    </button>
+                    <button class="feedback-content__btn-next">
+                        Continue to shipping
+                    </button>
+                </div>
             </form>
         </div>
 
         <div id="2" class="tabcontent">
-            <h3>Paris</h3>
-            <p>Paris is the capital of France.</p>
+            <div class="tab-content__title second-tabs">
+                Customer information
+            </div>
+            <div class="main-info__wrapper">
+                <div class="main-info__location">
+                    <ul class="location-list">
+                        <li class="location-list__item">Taras Shevchenko</li>
+                        <li class="location-list__item">Unit 2 Green Mount Park</li>
+                        <li class="location-list__item">Halifax</li>
+                        <li class="location-list__item">HX1 5QN</li>
+                        <li class="location-list__item">Phone: +3 8097 132-45-67</li>
+                    </ul>
+                    <div class="location-btn__wrap">
+                        <button>Edit Address</button>
+                        <button>Add New</button>
+                    </div>
+                </div>
+                <div class="main-info__map">
+                    <div id="map"></div>
+                </div>
+            </div>
+            <div class="tab-content__title second-title__tabs">
+                Customer information
+            </div>
+            <form class="shipping-method__flex">
+                <label class="default-radio__label">
+                    <div class="radio-label__wrap-main">
+                        <input name="check" type="radio" class="default-radio__btn">
+                        <span class="radio-label__subtitle">Standart Delivery</span>
+                        <span class="radio-label__price">Free</span>
+                    </div>
+                    <div class="radio-label__wrap-text">
+                        <p class="radio-label__text">
+                            Freebie checkout form of the third step in sketchapp. Feel free to download and use it for your project.
+                        </p>
+                    </div>
+                </label>
+                <label class="default-radio__label">
+                    <div class="radio-label__wrap-main">
+                        <input name="check" type="radio" class="default-radio__btn">
+                        <span class="radio-label__subtitle">Fast Delivery</span>
+                        <span class="radio-label__price">8.00 uah</span>
+                    </div>
+                    <div class="radio-label__wrap-text">
+                        <p class="radio-label__text">
+                            Freebie checkout form of the third step in sketchapp. Feel free to download and use it for your project.
+                        </p>
+                    </div>
+                </label>
+                <div class="feedback-content__buttons">
+                    <button class="feedback-content__btn-back">
+                        Return to shop
+                    </button>
+                    <button class="feedback-content__btn-next">
+                        Continue to shipping
+                    </button>
+                </div>
+            </form>
         </div>
 
         <div id="3" class="tabcontent">
@@ -66,5 +149,10 @@
 </div>
 
 <script src="js/main.min.js"></script>
+
+<script
+        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCc2Qt1tqIw8m8SzT7moJgkJE5o1zZ27-8&callback=initMap&libraries=&v=weekly"
+        async
+></script>
 </body>
 </html>

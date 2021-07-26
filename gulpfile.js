@@ -40,6 +40,7 @@ function cleanDist() {
 
 function scripts() {
     return src([
+        'node_modules/imask/dist/imask.js',
         'app/js/main.js'
     ])
     .pipe(concat('main.min.js'))

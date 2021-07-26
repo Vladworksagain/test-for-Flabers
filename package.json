@@ -18,6 +18,7 @@
     "gulp-uglify-es": "^2.0.0"
   },
   "dependencies": {
-    "del": "^6.0.0"
+    "del": "^6.0.0",
+    "imask": "^6.1.0"
   }
 }

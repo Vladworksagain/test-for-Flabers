@@ -1,3 +1,4 @@
+
 html
   font-size: 10px
   font-family: 'Arial', sans-serif
@@ -5,6 +6,9 @@ html
 
   @media screen and (max-width: 1210px)
     font-size: 8px
+
+button
+  cursor: pointer
 
 *, *:before, *:after
   box-sizing: border-box
@@ -52,16 +56,25 @@ textarea
     border: none
     border-bottom: 1px solid #d4d9dd
 
+    @media screen and (max-width: 868px)
+      width: 100%
+
     &.active
       border-bottom: 1px solid black
       color: #3a3f42
+
+.first-tabs
+  margin-top: 10rem
 
 .tab
   overflow: hidden
   display: flex
   justify-content: space-between
   align-items: center
-  margin-bottom: 10rem
+
+  @media screen and (max-width: 868px)
+    overflow-y: hidden
+    overflow-x: scroll
 
 .tabcontent
   display: none
@@ -71,9 +84,28 @@ textarea
   grid-template-columns: repeat(auto-fill, minmax(48% , 1fr))
   grid-gap: 3rem
 
+  @media screen and (max-width: 868px)
+    display: flex
+    flex-direction: column
+    grid-gap: 0
+
+.desc-postal__code
+
+  @media screen and (max-width: 868px)
+    display: none
+
+.mobile-postal__code
+  @media screen and (min-width: 868px)
+    display: none
 
 .default-label
   width: 100%
+
+  @media screen and (max-width: 868px)
+    margin-bottom: 3.5rem
+
+    &:last-of-type
+      margin-bottom: 0
 
   span
     font-size: 2.4rem
@@ -92,6 +124,241 @@ textarea
     padding: 3rem
     font-size: 3.15rem
 
+    &:focus
+      border: 2px solid #0095f8
+
+  .postal-code__wrap
+    position: relative
+
+    .find-postal__code-btn
+      border:
+        top: none
+        right: none
+        bottom: none
+        left: 2px solid #dde3e8
+      background-color: transparent
+      margin: 0
+      padding: 0
+      outline: none
+      font-size: 2.5rem
+      line-height: 1.2rem
+      font-weight: 400
+      color: #0095f8
+      position: absolute
+      right: 0
+      top: 0
+      height: 100%
+      width: 14rem
+
+  .default-select
+    width: 100%
+    height: 11rem
+    border: 2px solid #d4d9dd
+    border-radius: 3px
+    padding: 3rem
+    font-size: 3.15rem
+
+    &:focus
+      border: 2px solid #0095f8
+
+  select
+    outline-color: #0095f8
+
+  select:required:invalid
+    font-size: 3.1rem
+    line-height: 1.2rem
+    font-weight: 400
+    color: #788995
+
+  option[value=""][disabled]
+    display: none
+
 .tab-content__title
   font-size: 5rem
   margin-bottom: 5rem
+
+  @media screen and (max-width: 540px)
+    font-size: 3.5rem
+
+.feedback-content__buttons
+  display: flex
+  align-items: center
+  justify-content: space-between
+  grid-column: span 2
+
+  @media screen and (max-width: 868px)
+    margin-top: 7.4rem
+    flex-direction: column
+
+  .feedback-content__btn-back
+    font-size: 3rem
+    line-height: 1.2rem
+    font-weight: 400
+    color: #7e8e99
+    padding: 0
+    margin: 0
+    background-color: transparent
+    outline: none
+    border: none
+
+    @media screen and (max-width: 868px)
+      order: 1
+
+  .feedback-content__btn-next
+    outline: none
+    border: none
+    padding: 0
+    margin: 0
+    max-width: 50.3rem
+    width: 100%
+    height: 10.9rem
+    background-color: #0077e2
+    border-radius: 3px
+    font-size: 2.7rem
+    line-height: 1.2rem
+    font-weight: 700
+    text-transform: uppercase
+    color: #ffffff
+
+    @media screen and (max-width: 868px)
+      margin-bottom: 5.8rem
+      max-width: 100%
+
+    &:disabled
+      background-color: #ccc
+
+.second-tabs
+  margin: 25.8rem 0 3.3rem 0
+
+.main-info__wrapper
+  min-height: 45.8rem
+  border: 2px solid #d4d9dd
+  border-radius: 3px
+  display: flex
+  margin-bottom: 10.6rem
+
+  @media screen and (max-width: 868px)
+    flex-direction: column
+
+  .main-info__location
+    flex: 50%
+    border-right: 1px solid #d4d9dd
+    padding: 7.3rem 0 8.1rem 8.2rem
+
+    @media screen and (max-width: 540px)
+      padding: 1.5rem 0 4rem 1.5rem
+
+    .location-list
+      margin-bottom: 5.2rem
+
+      .location-list__item
+        font-size: 3rem
+        line-height: 5.2rem
+        font-weight: 400
+        color: #5e666c
+
+        @media screen and (max-width: 540px)
+          font-size: 2rem
+          line-height: 3.5rem
+
+    .location-btn__wrap
+      display: flex
+
+      button
+        border: none
+        background-color: transparent
+        padding: 0
+        outline: none
+        font-size: 2.7rem
+        font-weight: 700
+        color: #0095f8
+        margin-right: 4.8rem
+
+        @media screen and (max-width: 540px)
+          margin-right: 2.8rem
+
+        &:last-of-type
+          margin-right: 0
+
+  .main-info__map
+    flex: 50%
+
+    #map
+      width: 100%
+      height: 100%
+
+      @media screen and (max-width: 868px)
+        min-height: 44.3rem
+
+.second-title__tabs
+  margin-bottom: 7.5rem
+
+.shipping-method__flex
+  display: flex
+  justify-content: center
+  align-items: center
+  flex-wrap: wrap
+  margin: -.9rem -2.2rem
+
+  .feedback-content__buttons
+    width: 100%
+    margin: 9.9rem 2.2rem 0 2.2rem
+
+  .default-radio__label
+    max-width: 69.1rem
+    width: 100%
+    min-height: 36.2rem
+    border: 3px solid #d4d9dd
+    border-radius: 3px
+    padding: 7.8rem 6.1rem 8.6rem 8.1rem
+    margin: .9rem 2.2rem
+
+    @media screen and (max-width: 600px)
+      padding: 7.8rem 3rem 8.6rem 3rem
+
+    .radio-label__wrap-main
+      display: flex
+      justify-content: center
+      align-items: center
+
+    .default-radio__btn
+      width: 3.4rem
+      height: 3.4rem
+
+    .radio-label__subtitle
+      font-size: 3rem
+      line-height: 1.2rem
+      font-weight: 400
+      color: #212121
+      margin-left: 3.6rem
+
+      @media screen and (max-width: 600px)
+        font-size: 1.6rem
+        line-height: 1rem
+
+    .radio-label__price
+      font-size: 3rem
+      line-height: 1.2rem
+      font-weight: 700
+      color: #212121
+      margin-left: 16.6rem
+
+      @media screen and (max-width: 600px)
+        font-size: 1.6rem
+        line-height: 1rem
+        margin-left: 5rem
+
+    .radio-label__wrap-text
+      margin: 3.9rem auto 0 auto
+      max-width: 43rem
+      width: 100%
+
+      .radio-label__text
+        font-size: 2.8rem
+        line-height: 1.2
+        font-weight: 400
+        color: #9b9fa3
+
+        @media screen and (max-width: 600px)
+          font-size: 1.8rem
+          line-height: 1.1
