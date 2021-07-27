@@ -1,53 +1,84 @@
-let index
+new window.JustValidate('.just-validate', {
+    Rules: {
+        name: {
+            required: true,
+            minLength: 3,
+            maxLength: 15
+        },
+    },
 
-function tabs(evt, id) {
-    let i,
-        tabcontent,
-        tablinks;
+    submitHandler: () => {
+        rules = true
+    },
+    invalidFormCallback: () => {
+        rules = false
+    },
 
-    tabcontent = document.getElementsByClassName("tabcontent");
-    for (i = 0; i < tabcontent.length; i++) {
-        tabcontent[i].style.display = "none";
-        tabcontent[i].classList.remove('active')
-    }
+});
 
-    tablinks = document.getElementsByClassName("tablinks");
-    for (i = 0; i < tablinks.length; i++) {
-        tablinks[i].className = tablinks[i].className.replace("active", "");
-    }
-
-    document.getElementById(id).style.display = "block";
-    document.getElementById(id).classList.add('active')
-    evt.currentTarget.className += " active";
-
-
-
-    // window.addEventListener('resize', () => {
-    //     const width = window.innerWidth;
-    //     const tab = document.querySelectorAll('.tablinks')
-    //     tab.forEach((tabs) => {
-    //         if(width <= 868 && !tabs.classList.contains('active')) {
-    //             tabs.style.display = 'none';
-    //         }
-    //     })
-    // })
-
-    index = id
-}
-
+let rules = false
+let step = 1
+const tabTitles = document.querySelectorAll(".tablinks")
+const tabContent = document.querySelectorAll(".tabcontent")
 const buttonNext = document.querySelectorAll('.feedback-content__btn-next');
+const buttonBack = document.querySelectorAll('.feedback-content__btn-back');
 
-buttonNext.forEach((buttonNextStep) => {
-    buttonNextStep.addEventListener('click', nextStep);
-})
 
-function nextStep(e) {
-    e.preventDefault()
-    const element = document.getElementById(Number(index) + 1)
+const setActiveStep = (title) => {
+    tabContent.forEach(content => {
+        if (title.dataset.id === content.dataset.content) {
+            tabTitles.forEach(titlesToRemove => {
+                titlesToRemove.classList.remove('active')
+            })
+            title.classList.add('active')
+            content.classList.add('active')
+        } else {
+            content.classList.remove('active')
+        }
+    })
 }
 
 
-document.querySelector('.tablinks').click()
+const setStep = () => {
+    tabTitles.forEach(title => {
+        if (Number(title.dataset.id) === step) {
+            setActiveStep(title)
+        }
+    })
+}
+
+const nextStep = () => {
+    if (rules) {
+        step = step + 1
+        setStep()
+    }
+
+}
+const prevStep = () => {
+    step = step - 1
+    rules = false
+    setStep()
+
+}
+
+(function () {
+    setActiveStep(tabTitles[0])
+
+    buttonNext.forEach((buttonNextStep) => {
+        buttonNextStep.addEventListener('click', function (e) {
+            setTimeout(() => {
+                nextStep()
+            }, 100)
+        })
+    })
+    buttonBack.forEach((buttonPrevStep) => {
+        buttonPrevStep.addEventListener('click', function (e) {
+            e.preventDefault()
+            prevStep()
+        })
+    })
+}())
+
 
 var element = document.getElementById('inputMask');
 var phoneMask = IMask(element, {
@@ -57,25 +88,32 @@ var phoneMask = IMask(element, {
 });
 
 
-
-
 let map;
 
 function initMap() {
 
-    map = new google.maps.Map(document.getElementById("map"), {
-        center: { lat: -34.397, lng: 150.644 },
-        zoom: 8,
-        disableDefaultUI: true,
-        zoomControl: true,
-    });
+    let mapWrap = document.getElementById("map")
 
-    map.setCenter({lat: 50.4279196877749, lng: 30.500332326549188});
-    new google.maps.Marker({position:
-            {
-                lat: 50.4279196877749,
-                lng: 30.500332326549188
-            },
+    if (mapWrap) {
+        map = new google.maps.Map(mapWrap, {
+            center: {lat: -34.397, lng: 150.644},
+            zoom: 8,
+            disableDefaultUI: true,
+            zoomControl: true,
+        });
+
+        map.setCenter({lat: 50.4279196877749, lng: 30.500332326549188});
+        new google.maps.Marker({
+            position:
+                {
+                    lat: 50.4279196877749,
+                    lng: 30.500332326549188
+                },
             map: map,
-    });
+        });
+    }
+
+
 }
+
+
