@@ -1,10 +1,20 @@
 new window.JustValidate('.just-validate', {
-    Rules: {
+    rules: {
         name: {
             required: true,
             minLength: 3,
             maxLength: 15
         },
+        text: {
+            required: true,
+            minLength: 3,
+            maxLength: 15
+        },
+        myField: {
+            required: true,
+            maxLength: 19,
+            minLength: 18
+        }
     },
 
     submitHandler: () => {
@@ -22,7 +32,8 @@ const tabTitles = document.querySelectorAll(".tablinks")
 const tabContent = document.querySelectorAll(".tabcontent")
 const buttonNext = document.querySelectorAll('.feedback-content__btn-next');
 const buttonBack = document.querySelectorAll('.feedback-content__btn-back');
-
+const element = document.getElementById('inputMask');
+const element2 = document.getElementById('doubleInput');
 
 const setActiveStep = (title) => {
     tabContent.forEach(content => {
@@ -48,6 +59,15 @@ const setStep = () => {
 }
 
 const nextStep = () => {
+
+    console.log('nextStep')
+    if(element2.classList.contains('js-validate-error-field')) {
+        element.style.border = '1px solid red'
+    } else {
+        element.style.border = '2px solid #d4d9dd'
+    }
+
+
     if (rules) {
         step = step + 1
         setStep()
@@ -79,10 +99,15 @@ const prevStep = () => {
     })
 }())
 
+element.addEventListener('keypress', (e) => {
 
-var element = document.getElementById('inputMask');
+    element2.value = e.target.value.split('_').join('')
+    console.log(e.target.value.split('_').join('').length)
+    console.log(element2.value.length)
+})
+
 var phoneMask = IMask(element, {
-    mask: '+{3} 8(0) 000-00-00-00',
+    mask: '+{3} 8(000) 000-00-00',
     lazy: false,
     placeholderChar: '_',
 });
@@ -115,5 +140,6 @@ function initMap() {
 
 
 }
+
 
 

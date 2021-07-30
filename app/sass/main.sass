@@ -103,6 +103,7 @@ textarea
 
 .default-label
   width: 100%
+  position: relative
 
   @media screen and (max-width: 868px)
     margin-bottom: 3.5rem
@@ -129,6 +130,13 @@ textarea
 
     &:focus
       border: 2px solid #0095f8
+
+  #doubleInput
+    position: absolute
+    left: 0
+    bottom: 0
+    z-index: -1
+    opacity: 0
 
   .postal-code__wrap
     position: relative
